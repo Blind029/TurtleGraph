@@ -8,29 +8,33 @@ using namespace std;
 
 TurtleGraph::TurtleGraph()
 {
-  row=0;column=0;
+	row=0;column=0;
 	for (int i=0;i<20;i++)
 		for(int j=0;j<20;j++)
 			turtle[i][j]=0;
 }
 void TurtleGraph::setTurtle(int move,int dir)
 {
+	//create user input for pen up vs pen down
+	//if pen up, move the turtle but don't change the values from 0 to 1
+	//if direction=0 moving in one direction, and column stays constant
 	if (dir==0)
 	{
-		row+=move;
+		row+=move;//add the number of moves to the row
 		for(int i=row;i<row+move;i++)
 			turtle[column][i]=1;
 	}
-
+	//if direction=1 row stays constant
 	else
 	{
-		column+=move;
+		column+=move;//add the number of moves to the column
 		for(int i=column;i<column+move;i++)
 			turtle[i][row]=1;
 	}
 }
 void TurtleGraph::printTurtle()
 {
+	//go through each row and column and print based on current value of the array
 	for (int i=0;i<20;i++)
 		for(int j=0;j<20;j++)
 		{
@@ -39,5 +43,5 @@ void TurtleGraph::printTurtle()
 			else
 				cout<<"_";
 		}
-		cout<<endl;
+		cout<<endl;//next line whenever finishing a row
 }
